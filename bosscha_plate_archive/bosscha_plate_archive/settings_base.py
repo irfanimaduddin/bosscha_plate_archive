@@ -2,9 +2,9 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SITE_HEADER = "Bosscha Plate Archive" # Django administration -> in <h1>
-SITE_TITLE = "Bosscha Plate Archive" # Django site admin -> in <title>
-ADMIN_INDEX_TITLE = "Dashboard" # Site administration -> Home Admin Title
+SITE_HEADER = "BOPS Admin Site" # Django administration -> in <h1>
+SITE_TITLE = "BOPS Admin Site" # Django site admin -> in <title>
+ADMIN_INDEX_TITLE = "Admin Dashboard" # Site administration -> Home Admin Title
 
 ROOT_URLCONF = 'bosscha_plate_archive.urls'
 WSGI_APPLICATION = 'bosscha_plate_archive.wsgi.application'
@@ -12,6 +12,7 @@ WSGI_APPLICATION = 'bosscha_plate_archive.wsgi.application'
 INSTALLED_APPS = [
     # 3rd party
     'import_export',
+    'crispy_forms',
 
     # custom
     'plate_archive',
@@ -35,11 +36,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,6 +51,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -85,8 +87,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 # URL
 LOGOUT_REDIRECT_URL = '/admin/login/'

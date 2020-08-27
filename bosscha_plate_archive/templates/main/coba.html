@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update Plate | BOPS Header Input Site
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <h2>Update Plate:</h2>
+            <form id="plate_id_form" enctype="multipart/form-data" action="" method="POST" novalidate="">
+                {% csrf_token %}
+                <div id="field-plate_id" class="form-group row">
+                    <div class="row-sm-5 ml-3 mt-2">
+                        <input id="id_plate_id" class="form-control" type="text" name="plate_id" value="{{images.plate_id}}" placeholder="Plate ID" maxlength="10" required="" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4 sm-5 mt-2">
+            <ul class="list-group">
+                <li id="field-cover_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_cover_pic">Cover pic:</label>
+                            {{images.cover_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-plate_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_plate_pic">Plate pic:</label>
+                            {{images.plate_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-preview_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_preview_pic">Preview pic:</label>
+                            {{images.preview_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-logbook_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_logbook_pic">Logbook pic:</label>
+                            {{images.logbook_tag}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form id="plate_id_form" action="" method="POST" novalidate="">
+        {% csrf_token %}
+        <fieldset class="module mt-4">
+            <h3>Cover Plate</h3>
+            <div id="field-cover_id">
+                {{ form.cover_id|as_crispy_field }}
+            </div>
+            <div id="field-cover_object">
+                {{ form.cover_object|as_crispy_field }}
+            </div>
+            <div id="field-cover_ra">
+                {{ form.cover_ra|as_crispy_field }}
+            </div>
+            <div id="field-cover_dec">
+                {{ form.cover_dec|as_crispy_field }}
+            </div>
+            <div id="field-cover_t_start">
+                {{ form.cover_t_start|as_crispy_field }}
+            </div>
+            <div id="field-cover_t_end">
+                {{ form.cover_t_end|as_crispy_field }}
+            </div>
+            <div id="field-cover_exp">
+                {{ form.cover_exp|as_crispy_field }}
+            </div>
+            <div id="field-cover_emul">
+                {{ form.cover_emul|as_crispy_field }}
+            </div>
+            <div id="field-cover_filter">
+                {{ form.cover_filter|as_crispy_field }}
+            </div>
+            <div id="field-cover_grat">
+                {{ form.cover_grat|as_crispy_field }}
+            </div>
+            <div id="field-cover_date">
+                {{ form.cover_date|as_crispy_field }}
+            </div>
+            <div id="field-cover_prog">
+                {{ form.cover_prog|as_crispy_field }}
+            </div>
+            <div id="field-cover_obs">
+                {{ form.cover_obs|as_crispy_field }}
+            </div>
+            <div id="field-meas_auth">
+                {{ form.meas_auth|as_crispy_field }}
+            </div>
+            <div id="field-meas_date">
+                {{ form.meas_date|as_crispy_field }}
+            </div>
+            <div id="field-plate_qual">
+                {{ form.plate_qual|as_crispy_field }}
+            </div>
+            <div id="field-cover_note"">
+                {{ form.cover_note|as_crispy_field }}
+            </div>           
+        </fieldset>
+        <fieldset class="module mt-4">
+            {{ formset.management_form|crispy }}
+            <h3>Star Object</h3>
+            <div id="field-star_object">
+                {{ formset|crispy }}
+            </div>         
+        </fieldset>
+        <div class="row mt-3">
+            <input type="submit" class="btn btn-secondary" value="Submit"/>
+        </div>
+    </form>
+
+    <!-- Footer
+    <footer class="footer">
+        <div class="container-fluid mt-5">
+            <span class="text-muted">BOPS Header Input Site - &copy; Bosscha Observatory (2020)  </span>
+        </div>
+    </footer>
+     -->
+</div>
+{% endblock %}

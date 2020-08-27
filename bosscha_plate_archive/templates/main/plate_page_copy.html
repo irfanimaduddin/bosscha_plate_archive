@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Update Plate | BOPS Header Input Site
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+            <h2>Update Plate:</h2>
+            <form id="plate_id_form" enctype="multipart/form-data" action="" method="POST" novalidate="">
+                {% csrf_token %}
+                <div id="field-plate_id" class="form-group row">
+                    <div class="row-sm-5 ml-3 mt-2">
+                        <input id="id_plate_id" class="form-control" type="text" name="plate_id" value="{{instance.plate_id}}" placeholder="Plate ID" maxlength="10" required="" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4 sm-5 mt-2">
+            <ul class="list-group">
+                <li id="field-cover_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_cover_pic">Cover pic:</label>
+                            {{instance.cover_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-plate_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_plate_pic">Plate pic:</label>
+                            {{instance.plate_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-preview_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_preview_pic">Preview pic:</label>
+                            {{instance.preview_tag}}
+                        </div>
+                    </div>
+                </li>
+                <li id="field-logbook_pic" class="list-item">
+                    <div class="form-row">
+                        <div>
+                            <label for="id_logbook_pic">Logbook pic:</label>
+                            {{instance.logbook_tag}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form id="plate_form" enctype="multipart/form-data" action="" method="POST" novalidate="">
+        {% csrf_token %}
+        <fieldset class="module mt-4">
+            <h3>Cover Plate</h3>
+            <div id="field-cover_id" class="form-group row">
+                <label for="id_cover_id" class="col-sm-2 mr-3 mt-3 col-form-label">Cover ID</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_id" class="form-control" type="text" name="cover_id" value="{{instance.cover_id}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-cover_object" class="form-group row">
+                <label for="id_cover_object" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Object</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_object" class="form-control" type="text" name="cover_object" value="{{instance.cover_object}}"maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_ra" class="form-group row">
+                <label for="id_cover_ra" class="col-sm-2 mr-3 mt-2 col-form-label">Cover RA (hh mm)</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_ra" class="form-control" type="text" name="cover_ra" value="{{instance.cover_ra}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_dec" class="form-group row">
+                <label for="id_cover_dec" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Dec (deg)</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_dec" class="form-control" type="number" name="cover_dec" value="{{instance.cover_dec}}" step="any">
+                </div>
+            </div>
+            <div id="field-cover_t_start" class="form-group row">
+                <label for="id_cover_t_start" class="col-sm-2 mr-3 mt-2 col-form-label">Cover T_start</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_t_start" class="form-control" type="text" name="cover_t_start" value="{{instance.cover_t_start}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-cover_t_end" class="form-group row">
+                <label for="id_cover_t_end" class="col-sm-2 mr-3 mt-2 col-form-label">Cover T_end</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_t_end" class="form-control" type="text" name="cover_t_end" value="{{instance.cover_t_end}}"maxlength="10">
+                </div>
+            </div>
+            <div id="field-cover_exp" class="form-group row">
+                <label for="id_cover_exp" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Exposure (sec)</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_exp" class="form-control" type="text" name="cover_exp" value="{{instance.cover_exp}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_emul" class="form-group row">
+                <label for="id_cover_emul" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Emulsion</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_emul" class="form-control" type="text" name="cover_emul" value="{{instance.cover_emul}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_filter" class="form-group row">
+                <label for="id_cover_filter" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Filter</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_filter" class="form-control" type="text" name="cover_filter" value="{{instance.cover_filter}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_grat" class="form-group row">
+                <label for="id_cover_grat" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Grating</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_grat" class="form-control" type="text" name="cover_grat" value="{{instance.cover_grat}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_date" class="form-group row">
+                <label for="id_cover_date" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Date</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_date" class="form-control" type="text" name="cover_date" value="{{instance.cover_date}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-cover_prog" class="form-group row">
+                <label for="id_cover_prog" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Program</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_prog" class="form-control" type="text" name="cover_prog" value="{{instance.cover_prog}}" maxlength="20">
+                </div>
+            </div>
+            <div id="field-cover_obs" class="form-group row">
+                <label for="id_cover_obs" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Observer</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_cover_obs" class="form-control" type="text" name="cover_obs" value="{{instance.cover_obs}}" maxlength="30">
+                </div>
+            </div>
+            <div id="field-meas_auth" class="form-group row">
+                <label for="id_meas_auth" class="col-sm-2 mr-3 mt-2 col-form-label">Measurement Officer</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_meas_auth" class="form-control" type="text" name="meas_auth" value="{{instance.meas_auth}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-meas_date" class="form-group row">
+                <label for="id_meas_date" class="col-sm-2 mr-3 mt-2 col-form-label">Measurement Date</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_meas_date" class="form-control" type="text" name="meas_date" value="{{instance.meas_date}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-plate_qual" class="form-group row">
+                <label for="id_plate_qual" class="col-sm-2 mr-3 mt-2 col-form-label">Plate Quality</label>
+                <div class="col-sm-8 mt-2">
+                    <input id="id_plate_qual" class="form-control" type="text" name="plate_qual" value="{{instance.plate_qual}}" maxlength="10">
+                </div>
+            </div>
+            <div id="field-cover_note" class="form-group row">
+                <label for="id_cover_note" class="col-sm-2 mr-3 mt-2 col-form-label">Cover Remarks</label>
+                <div class="col-sm-8 mt-2">
+                    <textarea id="id_cover_note" class="form-control" name="cover_note" value="{{instance.cover_note}}" cols="40" rows="2"></textarea>
+                </div>
+            </div>           
+        </fieldset>
+        <div id="star_object-group">
+            <fieldset class="module mt-4">
+                <h3>Star Object</h3>
+                <!--
+                <div id="star_object-0">
+                    <h4>
+                        Star Object:
+                    </h4>
+                    <div id="field-star_object" class="form-group row">
+                        <label for="id_star_object" class="col-sm-2 mr-3 mt-3 col-form-label">Star Object</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_star_object" class="form-control" type="text" name="star_object" value="{{my_query.star_object}}" maxlength="10">
+                        </div>
+                    </div>
+                    <div id="field-date" class="form-group row">
+                        <label for="id_date" class="col-sm-2 mr-3 mt-2 col-form-label">Date</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_date" class="form-control" type="text" name="date" value="{{my_query.date}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-ra" class="form-group row">
+                        <label for="id_ra" class="col-sm-2 mr-3 mt-2 col-form-label">RA (hh mm)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_ra" class="form-control" type="text" name="ra" value="{{my_query.ra}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-dec" class="form-group row">
+                        <label for="id_dec" class="col-sm-2 mr-3 mt-2 col-form-label">Dec (deg)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_dec" class="form-control" type="text" name="dec" value="{{my_query.dec}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-dec_obs" class="form-group row">
+                        <label for="id_dec_obs" class="col-sm-2 mr-3 mt-2 col-form-label">Observed Dec (deg)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_dec_obs" class="form-control" type="text" name="dec_obs" value="{{my_query.dec_obs}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-ha" class="form-group row">
+                        <label for="id_ha" class="col-sm-2 mr-3 mt-2 col-form-label">HA (hh mm)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_ha" class="form-control" type="text" name="ha" value="{{my_query.ha}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-t_start" class="form-group row">
+                        <label for="id_t_start" class="col-sm-2 mr-3 mt-2 col-form-label">T Start</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_t_start" class="form-control" type="text" name="t_start" value="{{my_query.t_start}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-t_end" class="form-group row">
+                        <label for="id_t_end" class="col-sm-2 mr-3 mt-2 col-form-label">T End</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_t_end" class="form-control" type="text" name="t_end" value="{{my_query.t_end}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-exp" class="form-group row">
+                        <label for="id_exp" class="col-sm-2 mr-3 mt-2 col-form-label">Exposure (sec)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_exp" class="form-control" type="text" name="exp" value="{{my_query.exp}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-temperature" class="form-group row">
+                        <label for="id_temperature" class="col-sm-2 mr-3 mt-2 col-form-label">Temperature (Celcius)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_temperature" class="form-control" type="text" name="temperature" value="{{my_query.temperature}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-focus" class="form-group row">
+                        <label for="id_focus" class="col-sm-2 mr-3 mt-2 col-form-label">Focus (mm)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_focus" class="form-control" type="text" name="focus" value="{{my_query.focus}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-staand_plaat" class="form-group row">
+                        <label for="id_staand_plaat" class="col-sm-2 mr-3 mt-2 col-form-label">Plate Stand (deg)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_staand_plaat" class="form-control" type="text" name="staand_plaat" value="{{my_query.staand_plaat}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-emulsion" class="form-group row">
+                        <label for="id_emulsion" class="col-sm-2 mr-3 mt-2 col-form-label">Emulsion</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_emulsion" class="form-control" type="text" name="emulsion" value="{{my_query.emulsion}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-emulsion_no" class="form-group row">
+                        <label for="id_emulsion_no" class="col-sm-2 mr-3 mt-2 col-form-label">Emulsion No</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_emulsion_no" class="form-control" type="text" name="emulsion_no" value="{{my_query.emulsion_no}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-film" class="form-group row">
+                        <label for="id_film" class="col-sm-2 mr-3 mt-2 col-form-label">Film</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_film" class="form-control" type="text" name="film" value="{{my_query.film}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-plate_size" class="form-group row">
+                        <label for="id_plate_size" class="col-sm-2 mr-3 mt-2 col-form-label">Plate Size (mm x mm)</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_plate_size" class="form-control" type="text" name="plate_size" value="{{my_query.plate_size}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-camera_filter" class="form-group row">
+                        <label for="id_camera_filter" class="col-sm-2 mr-3 mt-2 col-form-label">Filter</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_camera_filter" class="form-control" type="text" name="camera_filter" value="{{my_query.camera_filter}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-grating" class="form-group row">
+                        <label for="id_grating" class="col-sm-2 mr-3 mt-2 col-form-label">Grating</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_grating" class="form-control" type="text" name="grating" value="{{my_query.grating}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-transparency" class="form-group row">
+                        <label for="id_transparency" class="col-sm-2 mr-3 mt-2 col-form-label">Transparency</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_transparency" class="form-control" type="text" name="transparency" value="{{my_query.transparency}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-seeing" class="form-group row">
+                        <label for="id_seeing" class="col-sm-2 mr-3 mt-2 col-form-label">Seeing</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_seeing" class="form-control" type="text" name="seeing" value="{{my_query.seeing}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-observer" class="form-group row">
+                        <label for="id_observer" class="col-sm-2 mr-3 mt-2 col-form-label">Observer</label>
+                        <div class="col-sm-8 mt-3">
+                            <input id="id_observer" class="form-control" type="text" name="observer" value="{{my_query.observer}}" maxlength="20">
+                        </div>
+                    </div>
+                    <div id="field-remarks" class="form-group row">
+                        <label for="id_remarks" class="col-sm-2 mr-3 mt-2 col-form-label">Remarks</label>
+                        <div class="col-sm-8 mt-2">
+                            <textarea id="id_remarks" class="form-control" name="remarks" value="{{my_query.remarks}}" cols="40" rows="2"></textarea>
+                        </div>
+                    </div>                   
+                </div>
+                -->
+            </fieldset>
+        </div>
+    </form>
+    
+    <div class="row mt-5">
+        <a type="button" class="btn btn-secondary" href="{% url 'platelist' %}">
+        Submit    
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home | BOPS Header Input Site
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <h1>Welcome to BOPS Header Input Site</h1>
+        </div>
+        <div class="row mt-4">
+            <p>lorem imsum</p>
+        </div>
+        <div class="row mt-5">
+            <a type="button" class="btn btn-secondary btn-lg btn-block" href="{% url 'platelist' %}">
+            Continue    
+            </a>
+        </div>
+        <!-- Footer -->
+        <div id="footer"></div>
+    </div>
+{% endblock %}

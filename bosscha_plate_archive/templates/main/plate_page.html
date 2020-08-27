@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Change plate | BOPS Admin Site
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <h2>Update Plate:</h2>
+    </div>    
+    <div class="row mt-4">
+        {{ form.plate_id|as_crispy_field }}
+    </div>
+    <div class="row">
+        {{ form.cover_id|as_crispy_field }}
+    </div>
+    <div class="row mt-4">
+        <h3>Star Object</h3>
+    </div>
+</div>
+{% endblock %}
