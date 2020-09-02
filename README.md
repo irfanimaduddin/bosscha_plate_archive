@@ -35,3 +35,10 @@ $ python manage.py runserver
 
 * Open http://localhost:8000
 
+* Costumize admin interface color
+
+```bash
+$ python manage.py migrate
+$ python manage.py collectstatic
+$ python manage.py runserver
+```

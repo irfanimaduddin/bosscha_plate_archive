@@ -21,9 +21,9 @@ from django.conf.urls import static, include
 from plate_archive.views import HomeView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name="home"),
-    path('plate/', include('plate_archive.urls')),
-    path('admin/', admin.site.urls),
+    # path('', HomeView.as_view(), name="home"),
+    # path('plate/', include('plate_archive.urls')),
+    path('', admin.site.urls),
 ]
 
 urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

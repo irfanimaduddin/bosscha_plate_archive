@@ -39,7 +39,7 @@ class Plate(models.Model):
     logbook_pic = models.FileField(blank=True, null=True)
     status = StatusField(max_length=100, choices=STATUS, default=STATUS.Unavailable)
     date_modified = MonitorField(monitor='status', when=['Processed'])
-    checked = models.BooleanField(blank=True, default=False)
+    checked = models.BooleanField(default=False)
 
     def cover_tag(self):
         cover_path = os.path.join(BASE_DIR, 'media', 'plate', str(self.plate_id), str(self.cover_pic))
@@ -71,7 +71,7 @@ class Plate(models.Model):
             return mark_safe('<a href="/media/logbook/%s" target="_blank">%s</a>' % (self.logbook_pic, self.logbook_pic))
         else:
             return mark_safe(self.logbook_pic)
-    
+
     cover_tag.short_description = 'Cover Image'
     plate_tag.short_description = 'Plate Image'
     preview_tag.short_description = 'Preview Image'
@@ -93,6 +93,14 @@ class Plate(models.Model):
 
     def __str__(self):
         return self.plate_id
+
+        
+    # def save(self, *args, **kwargs):
+    #     print(self.plate_id)
+    #     super(Plate, self).save(*args, **kwargs)
+
+
+
 
 class StarObject(models.Model):
     plate = models.ForeignKey(Plate, on_delete=models.CASCADE, related_name='star_object', null=True, blank=True)
@@ -121,3 +129,7 @@ class StarObject(models.Model):
 
     def __str__(self):
         return self.star_object
+
+    # def save(self, *args, **kwargs):
+    #     print(self.star_object)
+    #     super(StarObject, self).save(*args, **kwargs)

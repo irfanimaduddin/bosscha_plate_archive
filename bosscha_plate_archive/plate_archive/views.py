@@ -36,41 +36,6 @@ class PlateObjectMixin(object):
         if plate_id is not None:
             instance = get_object_or_404(self.model, plate_id=plate_id)
         return instance
-"""
-class PlatePageView(PlateObjectMixin, UpdateView):
-    # A class for Plate Update View
-    template_name = "main/coba.html"
-
-    def get(self, request, plate_id=None, *args, **kwargs):
-        # GET Method
-        instance = self.get_object()
-        if instance is not None:
-            form = PlateUpdateForm(instance=instance)
-            images = Plate.objects.get(plate_id=plate_id)
-            
-            context = {
-                'images': images,
-                'form': form,
-            }
-        return render(request=request, 
-        template_name=self.template_name,
-        context=context)
-
-    def post(self, request, plate_id=None, *args, **kwargs):
-        # POST Method
-        instance = self.get_object()
-        if instance is not None:
-            form = PlateUpdateForm(request.POST, instance=instance)
-            if form.is_valid():
-                form.save()
-                return redirect('platelist')
-            context = {
-                'form' : form,
-            }
-        return render(request=request,
-        template_name=self.template_name,
-        context=context)
-"""
 
 class PlatePageView(PlateObjectMixin, UpdateView):
     # A class for Plate Update View
@@ -127,11 +92,10 @@ class PlatePageView(PlateObjectMixin, UpdateView):
         # POST Method
         instance = self.get_object()
 
-        if instance is not None:
+        if instance is not None:          
             form = PlateUpdateForm(request.POST, instance=instance)
             #ObjectFormSet = inlineformset_factory(Plate, StarObject, fields=(self.fields), extra=0)
-            ObjectUpdateFormSet = inlineformset_factory(Plate, StarObject, 
-            form=ObjectUpdateForm, extra=0, can_delete=False)
+            ObjectUpdateFormSet = inlineformset_factory(Plate, StarObject, form=ObjectUpdateForm, extra=0, can_delete=False)
             formset = ObjectUpdateFormSet(request.POST, queryset=StarObject.objects.all(), instance=instance)             
                    
             if form.is_valid() and formset.is_valid():
@@ -143,7 +107,8 @@ class PlatePageView(PlateObjectMixin, UpdateView):
                 'form': form,
                 "formset": formset,
             }
-            
+            print('instance:', instance)
+            print('context:', context)
         return render(request=request, 
         template_name=self.template_name,
         context=context)

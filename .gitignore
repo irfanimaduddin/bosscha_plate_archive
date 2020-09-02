@@ -5,6 +5,5 @@ __pycache__/
 sqlite.db
 db.sqlite3
 
-bosscha_plate_archive/media/*.jpeg
-bosscha_plate_archive/media/*.png
-bosscha_plate_archive/media/*.jpg
+bosscha_plate_archive/media/*
+

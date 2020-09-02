@@ -12,7 +12,9 @@ WSGI_APPLICATION = 'bosscha_plate_archive.wsgi.application'
 INSTALLED_APPS = [
     # 3rd party
     'import_export',
-    'crispy_forms',
+    #'crispy_forms',
+    # 'admin_interface',
+    # 'colorfield',
 
     # custom
     'plate_archive',
@@ -39,7 +41,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates', 'admin')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -86,11 +88,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
+STATIC_ROOT = str(
     os.path.join(BASE_DIR, "static"),
 )
 
+STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
+
 # URL
-LOGOUT_REDIRECT_URL = '/admin/login/'
+LOGOUT_REDIRECT_URL = '/'
+
+# DJANGO ADMIN INTERFACE
+# X_FRAME_OPTIONS = 'SAMEORIGIN' # only if django version >= 3.0
